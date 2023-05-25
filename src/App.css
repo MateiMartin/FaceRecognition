@@ -1,0 +1,21 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body{
+  background: linear-gradient(90deg, #d45656, #bdbb70);
+}
+
+button {
+  cursor: pointer;
+}
+
+.particles{
+  z-index: -999;
+}
+
+.content{
+  z-index: 4;
+}
