@@ -7,6 +7,7 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 import 'tachyons';
 
+
 function App() {
 
 
