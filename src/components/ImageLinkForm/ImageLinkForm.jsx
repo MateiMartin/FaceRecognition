@@ -4,15 +4,37 @@ import FaceRecognition from "../FaceRecognition/FaceRecognition";
 const ImageLinkForm = () => {
     const [input, setInput] = useState("");
     const [imgLink, setimgLink] = useState('');
+    const [box, setBox] = useState({});
+
     const PAT = "113115b0569046aa85c48befbe622f2a";
     const USER_ID = "iwh62jabgdj6";
     const APP_ID = "my-first-application";
     const MODEL_ID = "face-detection";
-
+    //////////////////////////////////////////////////////////////////
     const onInputChange = (event) => {
         setInput(event.target.value);
     };
+    //////////////////////////////////////////////////////////////////
+    const calculateFaceLocation = (data) => {
+        const face = data.outputs[0].data.regions[0].region_info.bounding_box;
+        const image = document.getElementById("inputImage");
+        const width = Number(image.width);
+        const height = Number(image.height);
+        return {
+            leftCol: face.left_col * width,
+            topRow: face.top_row * height,
+            rightCol: width - (face.right_col * width),
+            bottomRow: height - (face.bottom_row * height),
+        };
 
+    };
+
+    const displayFaceBox = (data) => {
+        setBox(data);
+        console.log(data);
+    }
+
+    //////////////////////////////////////////////////////////////////
     const onSubmit = () => {
         console.log("click");
         setimgLink(input);
@@ -43,14 +65,14 @@ const ImageLinkForm = () => {
 
         fetch(`https://api.clarifai.com/v2/models/${MODEL_ID}/outputs`, requestOptions)
             .then((response) => response.json())
-            .then((result) => console.log(result))
+            .then((result) => displayFaceBox(calculateFaceLocation(result)))
             .catch((error) => console.log("error", error));
 
 
     };
-
+    /////////////////////////////////////////////////////////////////////
     return (
-        <div className="container">
+        <div className="container flex-column justify-center">
             <p className="f3 tc">This application will detect faces in your pictures. Give it a try!</p>
             <div className="flex justify-center w-100 pt4">
                 <div className="form pa4 br3 shadow-1 opacity-div w-60">
@@ -60,7 +82,7 @@ const ImageLinkForm = () => {
                     </button>
                 </div>
             </div>
-            <FaceRecognition link={imgLink} />
+            <FaceRecognition link={imgLink} box={box} />
         </div>
 
     );
