@@ -4,7 +4,7 @@ import FaceRecognition from "../FaceRecognition/FaceRecognition";
 const ImageLinkForm = () => {
     const [input, setInput] = useState("");
     const [imgLink, setimgLink] = useState('');
-    const [box, setBox] = useState({});
+    const [box, setBox] = useState([]);
 
     const PAT = "113115b0569046aa85c48befbe622f2a";
     const USER_ID = "iwh62jabgdj6";
@@ -16,17 +16,21 @@ const ImageLinkForm = () => {
     };
     //////////////////////////////////////////////////////////////////
     const calculateFaceLocation = (data) => {
-        const face = data.outputs[0].data.regions[0].region_info.bounding_box;
-        const image = document.getElementById("inputImage");
-        const width = Number(image.width);
-        const height = Number(image.height);
-        return {
-            leftCol: face.left_col * width,
-            topRow: face.top_row * height,
-            rightCol: width - (face.right_col * width),
-            bottomRow: height - (face.bottom_row * height),
-        };
-
+        const regions = data.outputs[0].data.regions;
+        const cordonates = [];
+        regions.forEach((region) => {
+            const face = region.region_info.bounding_box;
+            const image = document.getElementById("inputImage");
+            const width = Number(image.width);
+            const height = Number(image.height);
+            cordonates.push({
+                leftCol: face.left_col * width,
+                topRow: face.top_row * height,
+                rightCol: width - face.right_col * width,
+                bottomRow: height - face.bottom_row * height,
+            });
+        });
+        return cordonates;
     };
 
     const displayFaceBox = (data) => {
