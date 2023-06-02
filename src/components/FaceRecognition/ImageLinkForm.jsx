@@ -82,8 +82,7 @@ const ImageLinkForm = () => {
             <p className="f3 tc">This application will detect faces in your pictures. Give it a try!</p>
             <div className="flex justify-center w-100 pt4">
                 <div className="form pa4 br3 shadow-1 opacity-div w-60">
-
-                    <input type="text" className="f4 pa2 w-70 center" onChange={onInputChange} />
+                    <input type="text" className="f4 pa2 w-70 center" onChange={onInputChange} placeholder="Enter a link here" />
                     <button className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple" onClick={onSubmit}>
                         Detect
                     </button>
