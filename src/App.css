@@ -5,7 +5,10 @@
 }
 
 body {
-  background: linear-gradient(90deg, #d45656, #bdbb70);
+
+  background: #4568DC;
+  background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);
+  background: linear-gradient(to right, #B06AB3, #4568DC);
 }
 
 button {

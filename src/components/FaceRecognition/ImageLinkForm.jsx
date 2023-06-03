@@ -79,7 +79,7 @@ const ImageLinkForm = () => {
     /////////////////////////////////////////////////////////////////////
     return (
         <div className="container flex-column justify-center">
-            <p className="f3 tc">This application will detect faces in your pictures. Give it a try!</p>
+            <p className="f3 tc white">This application will detect faces in your pictures. Give it a try!</p>
             <div className="flex justify-center w-100 pt4">
                 <div className="form pa4 br3 shadow-1 opacity-div w-60">
                     <input type="text" className="f4 pa2 w-70 center" onChange={onInputChange} placeholder="Enter a link here" />

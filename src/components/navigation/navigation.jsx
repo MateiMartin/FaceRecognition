@@ -9,8 +9,8 @@ function Navigation({ onRouteChange, isSignedIn }) {
                 display: 'flex',
                 justifyContent: 'flex-end',
             }}>
-                <a href="https://github.com/MateiMartin" className="f3 link dim black underline pa3 pointer">Contact me</a>
-                <p onClick={() => onRouteChange('signout')} className="f3 link dim black underline pa3 pointer">Sign Out</p>
+                <a href="https://github.com/MateiMartin" className="f3 link dim white underline pa3 pointer">Contact me</a>
+                <p onClick={() => onRouteChange('signout')} className="f3 link dim white underline pa3 pointer">Sign Out</p>
 
             </nav>)
     } else {
@@ -19,9 +19,9 @@ function Navigation({ onRouteChange, isSignedIn }) {
                 display: 'flex',
                 justifyContent: 'flex-end',
             }}>
-                <a href="https://github.com/MateiMartin" className="f3 link dim black underline pa3 pointer">Contact me</a>
-                <p onClick={() => onRouteChange('signin')} className="f3 link dim black underline pa3 pointer">Sign In</p>
-                <p onClick={() => onRouteChange('registre')} className="f3 link dim black underline pa3 pointer">Register</p>
+                <a href="https://github.com/MateiMartin" className="f3 link dim white underline pa3 pointer">Contact me</a>
+                <p onClick={() => onRouteChange('signin')} className="f3 link dim white underline pa3 pointer">Sign In</p>
+                <p onClick={() => onRouteChange('registre')} className="f3 link dim white underline pa3 pointer">Register</p>
             </nav>)
     }
 

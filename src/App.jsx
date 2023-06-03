@@ -26,7 +26,7 @@ function App() {
 
     return (
         <div className="body">
-            <ParticlesBg color='#a6700c' num={200} type="cobweb" bg={true} />
+            <ParticlesBg color='#000080' num={200} type="cobweb" bg={true} />
 
 
 
@@ -39,15 +39,24 @@ function App() {
                     <ImageLinkForm />
                 </>
                 : (
-                    route === 'signin'
+                    route === 'signout'
                         ? <>
                             <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
                             <Signin onRouteChange={onRouteChange} />
+
+
                         </>
-                        : <>
-                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
-                            <Register onRouteChange={onRouteChange} />
-                        </>
+                        : route === 'signin'
+
+                            ? <>
+                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+                                <Signin onRouteChange={onRouteChange} />
+                            </>
+                            :
+                            <>
+                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+                                <Register onRouteChange={onRouteChange} />
+                            </>
                 )
 
             }
