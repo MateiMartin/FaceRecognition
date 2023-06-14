@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ParticlesBg from 'particles-bg'
 import Navigation from './components/navigation/navigation';
 import ImageLinkForm from './components/FaceRecognition/ImageLinkForm';
@@ -14,6 +14,23 @@ import 'tachyons';
 function App() {
     const [route, setRoute] = useState('signin');
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const [user, setUser] = useState({
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+    });
+
+    const loadUser = (user) => {
+        setUser({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            entries: user.entries,
+            joined: user.joined
+        });
+    }
 
     const onRouteChange = (route) => {
         if (route === 'signout') {
@@ -23,6 +40,7 @@ function App() {
         }
         setRoute(route);
     }
+
 
     return (
         <div className="body">
@@ -55,7 +73,7 @@ function App() {
                             :
                             <>
                                 <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
-                                <Register onRouteChange={onRouteChange} />
+                                <Register onRouteChange={onRouteChange} loadUser={loadUser} />
                             </>
                 )
 
