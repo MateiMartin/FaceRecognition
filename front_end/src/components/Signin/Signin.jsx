@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 
-const Signin = ({ onRouteChange }) => {
+const Signin = ({ onRouteChange, loadUser }) => {
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
     const onEmailChange = (event) => {
@@ -24,7 +24,8 @@ const Signin = ({ onRouteChange }) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data === 'success') {
+                if (data) {
+                    loadUser(data);
                     onRouteChange('home');
                 }
                 else {

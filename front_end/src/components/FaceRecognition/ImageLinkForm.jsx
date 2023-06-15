@@ -3,7 +3,7 @@ import FaceRecognition from "./FaceRecognition";
 
 
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ loadUser, user }) => {
     const [input, setInput] = useState("");
     const [imgLink, setimgLink] = useState('');
     const [box, setBox] = useState([]);
@@ -71,7 +71,23 @@ const ImageLinkForm = () => {
 
         fetch(`https://api.clarifai.com/v2/models/${MODEL_ID}/outputs`, requestOptions)
             .then((response) => response.json())
-            .then((result) => displayFaceBox(calculateFaceLocation(result)))
+            .then((result) => {
+                if (result) {
+                    fetch('http://localhost:3000/image', {
+                        method: 'put',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            id: user.id
+                        })
+
+                    })
+                        .then(response => response.json())
+                        .then(count => {
+                            loadUser({ ...user, entries: count })
+                        })
+                }
+                displayFaceBox(calculateFaceLocation(result))
+            })
             .catch((error) => console.log("error", error));
 
 
