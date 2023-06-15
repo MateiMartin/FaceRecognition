@@ -12,6 +12,14 @@ import 'tachyons';
 
 
 function App() {
+
+    useEffect(() => {
+
+        fetch('http://localhost:3000/')
+            .catch(err => { setWorking(false), console.log(err) })
+
+    })
+
     const [route, setRoute] = useState('signin');
     const [working, setWorking] = useState(true);
     const [isSignedIn, setIsSignedIn] = useState(false);
@@ -23,13 +31,6 @@ function App() {
         joined: ''
     });
 
-    useEffect(() => {
-
-        fetch('http://localhost:3000/')
-            .then(response => response.json())
-            .catch(err => { setWorking(false), console.log(err) })
-
-    })
 
     const loadUser = (user) => {
         setUser({
