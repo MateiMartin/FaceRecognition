@@ -30,13 +30,12 @@ const Register = ({ onRouteChange, loadUser }) => {
         })
             .then(response => response.json())
             .then(user => {
-                if (user.name !== '' && user.email !== '' && user.password !== '') {
+                if (user.id !== undefined) {
                     loadUser(user);
                     onRouteChange('home');
                 }
-                else {
-                    alert('Please fill all the fields');
-                }
+                else
+                    alert('Unable to register');
             })
 
     }

@@ -1,30 +1,26 @@
-import React from "react";
-import { useState } from "react";
+import React from 'react';
+import GithubIcon from './github.svg';
 
 function Navigation({ onRouteChange, isSignedIn }) {
 
+    const gitHubImg = <img src={GithubIcon} alt="GitHub" className="ml1 mb2" />;
+
     if (isSignedIn) {
         return (
-            <nav style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-            }}>
-                <a href="https://github.com/MateiMartin" className="f3 link dim white underline pa3 pointer">Contact me</a>
-                <p onClick={() => onRouteChange('signout')} className="f3 link dim white underline pa3 pointer">Sign Out</p>
-
-            </nav>)
+            <nav className="flex justify-end items-center">
+                <a href="https://github.com/MateiMartin" className="f3 link white pa3 pointer underline-hover flex items-center"> My GitHub{gitHubImg}</a>
+                <p onClick={() => onRouteChange('signout')} className="f3 link white pa3 pointer underline-hover">Sign Out</p>
+            </nav>
+        );
     } else {
         return (
-            <nav style={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-            }}>
-                <a href="https://github.com/MateiMartin" className="f3 link dim white underline pa3 pointer">Contact me</a>
-                <p onClick={() => onRouteChange('signin')} className="f3 link dim white underline pa3 pointer">Sign In</p>
-                <p onClick={() => onRouteChange('registre')} className="f3 link dim white underline pa3 pointer">Register</p>
-            </nav>)
+            <nav className="flex justify-end items-center">
+                <a href="https://github.com/MateiMartin" className="f3 link white pa3 pointer underline-hover flex items-center"> My GitHub{gitHubImg}</a>
+                <p onClick={() => onRouteChange('signin')} className="f3 link white pa3 pointer underline-hover">Sign In</p>
+                <p onClick={() => onRouteChange('registre')} className="f3 link white pa3 pointer underline-hover">Register</p>
+            </nav>
+        );
     }
-
 }
 
 export default Navigation;

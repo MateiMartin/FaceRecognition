@@ -24,7 +24,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data) {
+                if (data.id !== undefined) {
                     loadUser(data);
                     onRouteChange('home');
                 }
