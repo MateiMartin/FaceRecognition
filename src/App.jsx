@@ -13,13 +13,6 @@ import 'tachyons';
 
 function App() {
 
-    useEffect(() => {
-
-        fetch('http://localhost:3000/')
-            .catch(err => { setWorking(false), console.log(err) })
-
-    })
-
     const [route, setRoute] = useState('signin');
     const [working, setWorking] = useState(true);
     const [isSignedIn, setIsSignedIn] = useState(false);
@@ -31,6 +24,22 @@ function App() {
         joined: ''
     });
 
+
+
+    useEffect(() => {
+        fetch('http://localhost:3000/')
+            .catch(err => { setWorking(false), console.log(err) })
+    })
+
+    if (!working) {
+        return (<>
+            <div className="vh-100 mw-100 flex flex-column items-center justify-center">
+                <ParticlesBg color='#000080' num={200} type="cobweb" bg={true} />
+                <h1 className="tc white">Server is not online at the moment</h1>
+                <h2 className="tc white">Try again later...</h2>
+            </div>
+        </>)
+    }
 
     const loadUser = (user) => {
         setUser({
@@ -51,20 +60,10 @@ function App() {
         setRoute(route);
     }
 
-    if (!working) {
-        return (<>
-            <div className="vh-100 mw-100 flex flex-column items-center justify-center">
-                <h1 className="tc white">Server is not online</h1>
-                <h2 className="tc white">Try again later...</h2>
-            </div>
-        </>)
-    }
 
     return (
         <div className="body">
             <ParticlesBg color='#000080' num={200} type="cobweb" bg={true} />
-
-
 
             {route === 'home'
                 ?
