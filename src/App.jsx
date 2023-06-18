@@ -14,7 +14,7 @@ import 'tachyons';
 function App() {
 
     const [route, setRoute] = useState('signin');
-    const [working, setWorking] = useState(true);
+    const [working, setWorking] = useState(false);
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [user, setUser] = useState({
         id: '',
@@ -28,7 +28,7 @@ function App() {
 
     useEffect(() => {
         fetch('http://localhost:3000/')
-            .catch(err => { setWorking(false), console.log(err) })
+            .then(response => setWorking(true))
     })
 
     if (!working) {
