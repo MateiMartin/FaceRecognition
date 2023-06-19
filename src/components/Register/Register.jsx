@@ -34,8 +34,12 @@ const Register = ({ onRouteChange, loadUser }) => {
                     loadUser(user);
                     onRouteChange('home');
                 }
-                else
+                else {
+                    setName('');
+                    setEmail('');
+                    setPassword('');
                     alert('Unable to register');
+                }
             })
 
     }
