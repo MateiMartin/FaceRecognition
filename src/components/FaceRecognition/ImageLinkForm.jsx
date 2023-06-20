@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import FaceRecognition from "./FaceRecognition";
 
-
-
 const ImageLinkForm = ({ loadUser, user }) => {
     const [input, setInput] = useState("");
     const [imgLink, setimgLink] = useState('');
@@ -35,10 +33,9 @@ const ImageLinkForm = ({ loadUser, user }) => {
         setBox(data);
     }
 
-    //////////////////////////////////////////////////////////////////
     const onSubmit = () => {
         setimgLink(input);
-        fetch('http://localhost:3000/imageUrl', {
+        fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/imageUrl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -48,7 +45,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
             .then((response) => response.json())
             .then((result) => {
                 if (result) {
-                    fetch('http://localhost:3000/image', {
+                    fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/image', {
                         method: 'put',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -66,9 +63,6 @@ const ImageLinkForm = ({ loadUser, user }) => {
             .catch((error) => console.log("error", error))
     };
 
-
-
-    /////////////////////////////////////////////////////////////////////
     return (
         <div className="container flex-column justify-center">
             <p className="f3 tc white">This application will detect faces in your pictures. Give it a try!</p>

@@ -27,7 +27,7 @@ function App() {
 
 
     useEffect(() => {
-        fetch('http://localhost:3000/')
+        fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/')
             .then(response => setWorking(true))
     })
 
