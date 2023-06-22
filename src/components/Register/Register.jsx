@@ -19,7 +19,7 @@ const Register = ({ onRouteChange, loadUser }) => {
     }
 
     const onSubmitSignUp = () => {
-        fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/register', {
+        fetch('https://face-recognition-api-wbff.onrender.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

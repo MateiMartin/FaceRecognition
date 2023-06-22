@@ -35,7 +35,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
 
     const onSubmit = () => {
         setimgLink(input);
-        fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/imageUrl', {
+        fetch('https://face-recognition-api-wbff.onrender.com/imageUrl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -45,7 +45,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
             .then((response) => response.json())
             .then((result) => {
                 if (result) {
-                    fetch('https://murmuring-stream-36320-7222fbd69202.herokuapp.com/image', {
+                    fetch('https://face-recognition-api-wbff.onrender.com/image', {
                         method: 'put',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
