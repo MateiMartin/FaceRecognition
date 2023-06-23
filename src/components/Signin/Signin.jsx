@@ -14,7 +14,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
     }
 
     const onSubmitSignIn = () => {
-        fetch('https://face-recognition-api-wbff.onrender.com/signin', {
+        fetch('https://facerecognition-server-unmq.onrender.com/signin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -27,7 +27,7 @@ function App() {
 
 
     useEffect(() => {
-        fetch('https://face-recognition-api-wbff.onrender.com/')
+        fetch('https://facerecognition-server-unmq.onrender.com')
             .then(response => setWorking(true))
     })
 

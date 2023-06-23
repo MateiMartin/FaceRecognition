@@ -19,7 +19,7 @@ const Register = ({ onRouteChange, loadUser }) => {
     }
 
     const onSubmitSignUp = () => {
-        fetch('https://face-recognition-api-wbff.onrender.com/register', {
+        fetch('https://facerecognition-server-unmq.onrender.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
