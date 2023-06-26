@@ -23,7 +23,3 @@ To get started with the FaceRecognition application, follow these steps:
 4. Install the necessary dependencies by running `npm install` or `yarn install`.
 5. Start the development server by running `npm run dev` or `yarn dev`.
 6. Open your browser and navigate to the specified development server address (typically `http://localhost:3000`).
-
-## License
-
-The FaceRecognition project is licensed under the [MIT License](LICENSE).
