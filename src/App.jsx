@@ -7,6 +7,7 @@ import Logo from './components/logo/logo';
 import Rank from './components/Rank/Rank';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
+import Profile from './components/Profile/Profile';
 import './App.css';
 import 'tachyons';
 
@@ -68,30 +69,36 @@ function App() {
             {route === 'home'
                 ?
                 <>
-                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
                     <Logo />
                     <Rank name={user.name} entries={user.entries} />
                     <ImageLinkForm loadUser={loadUser} user={user} />
                 </>
                 : (
-                    route === 'signout'
+                    route === 'profile'
                         ? <>
-                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
-                            <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
-
-
+                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                            <Profile user={user}/>
                         </>
-                        : route === 'signin'
-
+                        :
+                        route === 'signout'
                             ? <>
-                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
+                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
                                 <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
+
+
                             </>
-                            :
-                            <>
-                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} />
-                                <Register onRouteChange={onRouteChange} loadUser={loadUser} />
-                            </>
+                            : route === 'signin'
+
+                                ? <>
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                                    <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
+                                </>
+                                :
+                                <>
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                                    <Register onRouteChange={onRouteChange} loadUser={loadUser} />
+                                </>
                 )
 
             }
