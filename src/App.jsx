@@ -70,7 +70,7 @@ function App() {
                 position: "absolute",
                 zIndex: -2,
                 width: '100%',
-                height: '137vh',
+                height: '157vh',
             }} className='particles' />
 
             {route === 'home'
@@ -78,9 +78,11 @@ function App() {
                 <>
                     <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
                     <Logo />
-                    <Rank name={user.name} entries={user.entries} />
-                    <ImageLinkForm loadUser={loadUser} user={user} />
-                    <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} user={user} />
+                    <div className='flex flex-column justify-center items-center'>
+                        <Rank name={user.name} entries={user.entries} />
+                        <ImageLinkForm loadUser={loadUser} user={user} />
+                        <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} user={user} />
+                    </div>
                 </>
                 : (
                     route === 'profile'

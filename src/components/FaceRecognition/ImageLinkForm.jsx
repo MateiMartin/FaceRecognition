@@ -64,7 +64,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
     };
 
     return (
-        <div className="container flex-column justify-center">
+        <div className="mt4 flex-column justify-center">
             <p className="f3 tc white">This application will detect faces in your pictures. Give it a try!</p>
             <div className="flex justify-center w-100 pt4">
                 <div className="form pa4 br3 shadow-1 opacity-div w-60">
