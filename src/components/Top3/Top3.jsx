@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './top3.css';
+import './Top3.css';
 const Top3 = ({ setUserArrayTop, userArrayTop, user }) => {
 
 
