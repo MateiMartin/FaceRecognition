@@ -14,7 +14,6 @@ function Navigation({ onRouteChange, isSignedIn, route }) {
             </nav>
         );
     } else if (isSignedIn && route === 'profile') {
-        console.log(route)
         return (
             <nav className="flex justify-end items-center">
                 <a href="https://github.com/MateiMartin" className="f3 link white pa3 pointer underline-hover flex items-center"> My GitHub{gitHubImg}</a>

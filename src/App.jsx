@@ -8,6 +8,7 @@ import Rank from './components/Rank/Rank';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Profile from './components/Profile/Profile';
+import Top3 from './components/Top3/top3';
 import './App.css';
 import 'tachyons';
 
@@ -17,6 +18,7 @@ function App() {
     const [route, setRoute] = useState('signin');
     const [working, setWorking] = useState(false);
     const [isSignedIn, setIsSignedIn] = useState(false);
+    const [userArrayTop, setUserArrayTop] = useState([]);
     const [user, setUser] = useState({
         id: '',
         name: '',
@@ -30,7 +32,7 @@ function App() {
     useEffect(() => {
         fetch('https://facerecognition-server-unmq.onrender.com')
             .then(response => setWorking(true))
-    })
+    }, [])
 
     if (!working) {
         return (<>
@@ -64,7 +66,12 @@ function App() {
 
     return (
         <div className="body">
-            <ParticlesBg color='#000080' num={200} type="cobweb" bg={true} />
+            <ParticlesBg color='#000080' num={200} type="cobweb" bg={{
+                position: "absolute",
+                zIndex: -2,
+                width: '100%',
+                height: '137vh',
+            }} className='particles' />
 
             {route === 'home'
                 ?
@@ -73,12 +80,13 @@ function App() {
                     <Logo />
                     <Rank name={user.name} entries={user.entries} />
                     <ImageLinkForm loadUser={loadUser} user={user} />
+                    <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} user={user} />
                 </>
                 : (
                     route === 'profile'
                         ? <>
                             <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
-                            <Profile user={user}/>
+                            <Profile user={user} />
                         </>
                         :
                         route === 'signout'
