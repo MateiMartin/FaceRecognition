@@ -8,7 +8,7 @@ import Rank from './components/Rank/Rank';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Profile from './components/Profile/Profile';
-import Top3 from './components/Top3/top3';
+import Top3 from './components/Top3/Top3';
 import './App.css';
 import 'tachyons';
 
