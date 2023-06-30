@@ -7,7 +7,7 @@
 .container{
     z-index: -1;
     display: flex;
-    margin-top: 18rem;
+    margin-top: 10rem;
     width: 100vw;
     justify-content: center;
 

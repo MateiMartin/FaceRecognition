@@ -26,7 +26,7 @@ function App() {
         entries: 0,
         joined: ''
     });
-
+    const [isLink, setIsLink] = useState('');
 
 
     useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
                 position: "absolute",
                 zIndex: -2,
                 width: '100%',
-                height: '157vh',
+                height: isLink ? '140vh' : ' 120vh',
             }} className='particles' />
 
             {route === 'home'
@@ -80,7 +80,7 @@ function App() {
                     <Logo />
                     <div className='flex flex-column justify-center items-center'>
                         <Rank name={user.name} entries={user.entries} />
-                        <ImageLinkForm loadUser={loadUser} user={user} />
+                        <ImageLinkForm loadUser={loadUser} user={user} setIsLink={setIsLink} />
                         <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} user={user} />
                     </div>
                 </>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FaceRecognition from "./FaceRecognition";
 
-const ImageLinkForm = ({ loadUser, user }) => {
+const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
     const [input, setInput] = useState("");
     const [imgLink, setimgLink] = useState('');
     const [box, setBox] = useState([]);
@@ -9,6 +9,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
 
     const onInputChange = (event) => {
         setInput(event.target.value);
+        setIsLink(event.target.value);
     };
 
     const calculateFaceLocation = (data) => {
@@ -61,6 +62,7 @@ const ImageLinkForm = ({ loadUser, user }) => {
                 displayFaceBox(calculateFaceLocation(result))
             })
             .catch((error) => console.log("error", error))
+
     };
 
     return (
