@@ -39,7 +39,7 @@ function App() {
             <div className="vh-100 mw-100 flex flex-column items-center justify-center">
                 <ParticlesBg color='#000080' num={200} type="cobweb" bg={true} />
                 <h1 className="tc white">Server is not online at the moment</h1>
-                <h2 className="tc white">Try again later...</h2>
+                <h2 className="tc white">Wait a few seconds...</h2>
             </div>
         </>)
     }
