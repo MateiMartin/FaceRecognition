@@ -5,11 +5,14 @@ import { useState } from "react";
 const Signin = ({ onRouteChange, loadUser }) => {
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const onEmailChange = (event) => {
+        setErrorMessage('');
         setSignInEmail(event.target.value)
     }
 
     const onPasswordChange = (event) => {
+        setErrorMessage('');
         setSignInPassword(event.target.value)
     }
 
@@ -31,7 +34,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
                 else {
                     setSignInEmail('');
                     setSignInPassword('');
-                    alert('Wrong credentials');
+                    setErrorMessage('Wrong credentials');
                 }
             })
 
@@ -57,8 +60,9 @@ const Signin = ({ onRouteChange, loadUser }) => {
                             <input onClick={onSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f5" type="submit" value="Sign in" />
                         </div>
                         <div className="lh-copy mt3">
-                            <p onClick={() => onRouteChange('register')} className="f6 link dim white db pointer">Register</p>
+                            <p onClick={() => onRouteChange('register')} className="f5 link dim white db pointer">Register</p>
                         </div>
+                        {errorMessage && <p className="tc red f5 mt3">{errorMessage}</p>}
                     </div>
                 </main>
             </article>

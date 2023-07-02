@@ -5,17 +5,21 @@ const Register = ({ onRouteChange, loadUser }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onNameChange = (event) => {
         setName(event.target.value);
+        setErrorMessage('');
     }
 
     const onEmailChange = (event) => {
         setEmail(event.target.value);
+        setErrorMessage('');
     }
 
     const onPasswordChange = (event) => {
         setPassword(event.target.value);
+        setErrorMessage('');
     }
 
     const onSubmitSignUp = () => {
@@ -38,7 +42,7 @@ const Register = ({ onRouteChange, loadUser }) => {
                     setName('');
                     setEmail('');
                     setPassword('');
-                    alert('Unable to register');
+                    setErrorMessage('Unable to register');
                 }
             })
 
@@ -67,6 +71,7 @@ const Register = ({ onRouteChange, loadUser }) => {
                         <div className="">
                             <input onClick={onSubmitSignUp} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f5" type="submit" value="Sign up" />
                         </div>
+                        {errorMessage && <p className="tc red f5 mt3">{errorMessage}</p>}
                     </div>
                 </main>
             </article>
