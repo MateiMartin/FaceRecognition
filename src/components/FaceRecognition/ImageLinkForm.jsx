@@ -36,6 +36,8 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
 
     const onSubmit = () => {
         setimgLink(input);
+        let inputLink = document.getElementById("inputLink");
+        inputLink.value = "";
         fetch('https://facerecognition-server-unmq.onrender.com/imageUrl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
@@ -62,7 +64,6 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
                 displayFaceBox(calculateFaceLocation(result))
             })
             .catch((error) => console.log("error", error))
-
     };
 
     return (
@@ -70,7 +71,7 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
             <p className="f3 tc white">This application will detect faces in your pictures. Give it a try!</p>
             <div className="flex justify-center w-100 pt4">
                 <div className="form pa4 br3 shadow-1 opacity-div w-60">
-                    <input type="text" className="f4 pa2 w-70 center" onChange={onInputChange} placeholder="Enter a link here" />
+                    <input type="text" className="f4 pa2 w-70 center" id="inputLink" onChange={onInputChange} placeholder="Enter a link here" />
                     <button className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple" onClick={onSubmit}>
                         Detect
                     </button>

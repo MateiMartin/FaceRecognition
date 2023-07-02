@@ -70,7 +70,7 @@ function App() {
                 position: "absolute",
                 zIndex: -2,
                 width: '100%',
-                height: isLink ? '140vh' : ' 120vh',
+                height: isLink ? '146vh' : ' 120vh',
             }} className='particles' />
 
             {route === 'home'
