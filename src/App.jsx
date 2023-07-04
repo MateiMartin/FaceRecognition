@@ -35,20 +35,12 @@ function App() {
 
     useEffect(() => {
         const user = JSON.parse(window.localStorage.getItem('user'));
-        const userArrayTop = JSON.parse(window.localStorage.getItem('userArrayTop'));
-        const isLink = JSON.parse(window.localStorage.getItem('isLink'));
         const route = JSON.parse(window.localStorage.getItem('route'));
         const isSignedIn = JSON.parse(window.localStorage.getItem('isSignedIn'));
         if (user) {
             setUser(user);
         }
-        if (userArrayTop) {
-            setUserArrayTop(userArrayTop);
-        }
-        if (isLink) {
-            setIsLink(isLink);
-        }
-
+       
         if (route) {
             setRoute(route);
         }
@@ -60,11 +52,9 @@ function App() {
 
     useEffect(() => {
         window.localStorage.setItem('user', JSON.stringify(user));
-        window.localStorage.setItem('userArrayTop', JSON.stringify(userArrayTop));
-        window.localStorage.setItem('isLink', JSON.stringify(isLink));
         window.localStorage.setItem('route', JSON.stringify(route));
         window.localStorage.setItem('isSignedIn', JSON.stringify(isSignedIn));
-    }, [route, userArrayTop, user, isLink, isSignedIn])
+    }, [route, user, isSignedIn])
 
     if (!working) {
         return (<>
@@ -108,7 +98,7 @@ function App() {
             {route === 'home'
                 ?
                 <>
-                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
                     <Logo />
                     <div className='flex flex-column justify-center items-center'>
                         <Rank name={user.name} entries={user.entries} />
@@ -119,26 +109,24 @@ function App() {
                 : (
                     route === 'profile'
                         ? <>
-                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
                             <Profile user={user} />
                         </>
                         :
                         route === 'signout'
                             ? <>
-                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
                                 <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
-
-
                             </>
                             : route === 'signin'
 
                                 ? <>
-                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
                                     <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
                                 </>
                                 :
                                 <>
-                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} />
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
                                     <Register onRouteChange={onRouteChange} loadUser={loadUser} />
                                 </>
                 )
