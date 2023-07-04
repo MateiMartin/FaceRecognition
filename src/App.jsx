@@ -16,7 +16,7 @@ import 'tachyons';
 function App() {
 
     const [route, setRoute] = useState('signin');
-    const [working, setWorking] = useState(false);
+    const [working, setWorking] = useState(true);
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [userArrayTop, setUserArrayTop] = useState([]);
     const [user, setUser] = useState({
@@ -28,11 +28,43 @@ function App() {
     });
     const [isLink, setIsLink] = useState('');
 
-
     useEffect(() => {
         fetch('https://facerecognition-server-unmq.onrender.com')
             .then(response => setWorking(true))
     }, [])
+
+    useEffect(() => {
+        const user = JSON.parse(window.localStorage.getItem('user'));
+        const userArrayTop = JSON.parse(window.localStorage.getItem('userArrayTop'));
+        const isLink = JSON.parse(window.localStorage.getItem('isLink'));
+        const route = JSON.parse(window.localStorage.getItem('route'));
+        const isSignedIn = JSON.parse(window.localStorage.getItem('isSignedIn'));
+        if (user) {
+            setUser(user);
+        }
+        if (userArrayTop) {
+            setUserArrayTop(userArrayTop);
+        }
+        if (isLink) {
+            setIsLink(isLink);
+        }
+
+        if (route) {
+            setRoute(route);
+        }
+        if (isSignedIn) {
+            setIsSignedIn(isSignedIn);
+        }
+
+    }, [])
+
+    useEffect(() => {
+        window.localStorage.setItem('user', JSON.stringify(user));
+        window.localStorage.setItem('userArrayTop', JSON.stringify(userArrayTop));
+        window.localStorage.setItem('isLink', JSON.stringify(isLink));
+        window.localStorage.setItem('route', JSON.stringify(route));
+        window.localStorage.setItem('isSignedIn', JSON.stringify(isSignedIn));
+    }, [route, userArrayTop, user, isLink, isSignedIn])
 
     if (!working) {
         return (<>
