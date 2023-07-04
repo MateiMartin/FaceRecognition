@@ -12,12 +12,13 @@ const Top3 = ({ setUserArrayTop, userArrayTop, user }) => {
                         {user.name}: {user.entries}
                     </li>
                 ));
-                setUserArrayTop(mappedData);
+                if(userArrayTop!==mappedData)
+                    setUserArrayTop(mappedData);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, [user, userArrayTop, setUserArrayTop]);
+    }, [user, userArrayTop]);
 
     return (
         <div className='container'>
