@@ -40,7 +40,7 @@ function App() {
         if (user) {
             setUser(user);
         }
-       
+
         if (route) {
             setRoute(route);
         }
@@ -98,7 +98,7 @@ function App() {
             {route === 'home'
                 ?
                 <>
-                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
+                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser} />
                     <Logo />
                     <div className='flex flex-column justify-center items-center'>
                         <Rank name={user.name} entries={user.entries} />
@@ -109,24 +109,24 @@ function App() {
                 : (
                     route === 'profile'
                         ? <>
-                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
+                            <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser} />
                             <Profile user={user} />
                         </>
                         :
                         route === 'signout'
                             ? <>
-                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
+                                <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser} />
                                 <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
                             </>
                             : route === 'signin'
 
                                 ? <>
-                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser} />
                                     <Signin onRouteChange={onRouteChange} loadUser={loadUser} />
                                 </>
                                 :
                                 <>
-                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser}/>
+                                    <Navigation isSignedIn={isSignedIn} onRouteChange={onRouteChange} route={route} setUser={setUser} />
                                     <Register onRouteChange={onRouteChange} loadUser={loadUser} />
                                 </>
                 )
