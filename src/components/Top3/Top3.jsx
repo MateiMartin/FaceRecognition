@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Top3.css';
-const Top3 = ({ setUserArrayTop, userArrayTop, user }) => {
+const Top3 = ({ setUserArrayTop, userArrayTop}) => {
 
 
     useEffect(() => {
@@ -12,13 +12,12 @@ const Top3 = ({ setUserArrayTop, userArrayTop, user }) => {
                         {user.name}: {user.entries}
                     </li>
                 ));
-                if(userArrayTop!==mappedData)
                     setUserArrayTop(mappedData);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, [user, userArrayTop]);
+    }, []);
 
     return (
         <div className='container'>
@@ -26,7 +25,6 @@ const Top3 = ({ setUserArrayTop, userArrayTop, user }) => {
                 <h1 className='t-h1'>Top 3 Users</h1>
                 <ul>{userArrayTop}</ul>
             </div>
-
         </div>
     );
 };
