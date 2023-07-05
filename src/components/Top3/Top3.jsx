@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Top3.css';
-const Top3 = ({ setUserArrayTop, userArrayTop}) => {
+const Top3 = ({ setUserArrayTop, userArrayTop,user}) => {
 
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Top3 = ({ setUserArrayTop, userArrayTop}) => {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [user]);
 
     return (
         <div className='container'>

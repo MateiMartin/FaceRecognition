@@ -103,7 +103,7 @@ function App() {
                     <div className='flex flex-column justify-center items-center'>
                         <Rank name={user.name} entries={user.entries} />
                         <ImageLinkForm loadUser={loadUser} user={user} setIsLink={setIsLink} />
-                        <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} />
+                        <Top3 setUserArrayTop={setUserArrayTop} userArrayTop={userArrayTop} user={user} />
                     </div>
                 </>
                 : (
