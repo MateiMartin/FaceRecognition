@@ -12,8 +12,12 @@ const FaceRecognition = ({ link, box }) => {
                     {squeres}
                 </div>
             </div>
+            {link &&
+            <>
             {squeres.length > 1 && <h1 className="tc">There are <span className="light-green">{squeres.length} </span>faces in this picture</h1>}
             {squeres.length === 1 && <h1 className="tc">There is <span className="light-green">{squeres.length} </span>face in this picture</h1>}
+            </>
+            } 
         </>
     );
 }
