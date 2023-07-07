@@ -59,7 +59,6 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
                         .then(response => response.json())
                         .then(count => {
                                 loadUser({ ...user, entries: count })
-                             setInput("");
                         })
                 }
                 displayFaceBox(calculateFaceLocation(result))
