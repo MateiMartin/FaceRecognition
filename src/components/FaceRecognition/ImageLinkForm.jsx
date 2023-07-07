@@ -58,7 +58,6 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
                     })
                         .then(response => response.json())
                         .then(count => {
-                            if(input)
                                 loadUser({ ...user, entries: count })
                              setInput("");
                         })
