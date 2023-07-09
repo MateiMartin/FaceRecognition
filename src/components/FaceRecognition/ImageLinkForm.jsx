@@ -37,7 +37,6 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
     const onSubmit = () => {
         setimgLink(input);
         let inputLink = document.getElementById("inputLink");
-        inputLink.value = "";
         fetch('https://facerecognition-server-unmq.onrender.com/imageUrl', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
@@ -47,7 +46,7 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
         })
             .then((response) => response.json())
             .then((result) => {
-                if (result) {
+                if (result && inputLink.value !== "") {
                     fetch('https://facerecognition-server-unmq.onrender.com/image', {
                         method: 'put',
                         headers: { 'Content-Type': 'application/json' },
@@ -58,7 +57,10 @@ const ImageLinkForm = ({ loadUser, user, setIsLink }) => {
                     })
                         .then(response => response.json())
                         .then(count => {
+                            if (inputLink.value !== "") {
                                 loadUser({ ...user, entries: count })
+                                inputLink.value = "";
+                            }
                         })
                 }
                 displayFaceBox(calculateFaceLocation(result))

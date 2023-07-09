@@ -2,6 +2,7 @@ import React from "react";
 
 const Profile = ({ user }) => {
 
+    let date=new Date(user.joined).toISOString().split('T')[0];
     return (
         <div className="vh-100 flex items-center justify-center">
             <article style={{ backgroundColor: 'rgba(94, 44, 165, 0.7)' }} className="center br3 pa3 pa4-ns mv3 ba b--black-10">
@@ -13,7 +14,7 @@ const Profile = ({ user }) => {
                 <p className="lh-copy measure center f4 light-green">Name: {user.name}</p>
                 <p className="lh-copy measure center f4 light-green">Email: {user.email}</p>
                 <p className="lh-copy measure center f4 light-green">Entries: {user.entries}</p>
-                <p className="lh-copy measure center f4 light-green">Joined: {user.joined}</p>
+                <p className="lh-copy measure center f4 light-green">Joined: {date}</p>
             </article>
         </div>
     );
