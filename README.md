@@ -25,4 +25,5 @@ To get started with the FaceRecognition application, follow these steps:
 6. Open your browser and navigate to the specified development server address (typically `http://localhost:3000`).
 
 Also,  the app and the corresponding server are hosted on Render.
+<br/>
 *The site is not currently working because the database is not being maintained.
